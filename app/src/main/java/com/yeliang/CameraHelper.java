@@ -92,7 +92,6 @@ public class CameraHelper implements SurfaceHolder.Callback, Camera.PreviewCallb
             mCamera.addCallbackBuffer(buffer);
             mCamera.setPreviewCallbackWithBuffer(this);
             mCamera.setPreviewDisplay(mSurfaceHolder);
-            mOnSizeChangeListener.onChanged(mWidth, mHeight);
             mCamera.startPreview();
         } catch (IOException e) {
             e.printStackTrace();
@@ -178,7 +177,7 @@ public class CameraHelper implements SurfaceHolder.Callback, Camera.PreviewCallb
                 break;
 
         }
-        mPreviewCallBack.onPreviewFrame(data, camera);
+        mPreviewCallBack.onPreviewFrame(bytes, camera);
         camera.addCallbackBuffer(buffer);
     }
 
