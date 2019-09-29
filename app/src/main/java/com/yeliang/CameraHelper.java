@@ -242,6 +242,11 @@ public class CameraHelper implements SurfaceHolder.Callback, Camera.PreviewCallb
         stopPreview();
     }
 
+    public void release() {
+        mSurfaceHolder.removeCallback(this);
+        stopPreview();
+    }
+
     public interface OnSizeChangeListener {
         void onChanged(int width, int height);
     }

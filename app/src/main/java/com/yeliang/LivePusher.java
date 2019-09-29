@@ -24,7 +24,7 @@ public class LivePusher {
         native_init();
 
         videoChannel = new VideoChannel(this, activity, width, height, bitrate, fps, cameraId);
-        audioChannel = new AudioChannel();
+        audioChannel = new AudioChannel(this);
     }
 
     public void setPreviewDisplay(SurfaceHolder surfaceHolder) {
@@ -42,12 +42,19 @@ public class LivePusher {
     }
 
 
-
     public void stopLive() {
         videoChannel.stopLive();
         audioChannel.stopLive();
         native_stop();
     }
+
+    public void release(){
+        videoChannel.release();
+        audioChannel.release();
+        native_release();
+    }
+
+    private native void native_release();
 
     private native void native_init();
 
@@ -58,4 +65,10 @@ public class LivePusher {
     public native void native_push_video(byte[] data);
 
     private native void native_stop();
+
+    public native void native_setAudioInfo(int sampleRate, int channels);
+
+    public native int getInputSamples();
+
+    public native void native_pushAudio(byte[] bytes);
 }

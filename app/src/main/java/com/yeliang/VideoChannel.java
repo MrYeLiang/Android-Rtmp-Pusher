@@ -55,4 +55,8 @@ public class VideoChannel implements Camera.PreviewCallback, CameraHelper.OnSize
     public void switchCamera() {
        mCameraHelper.switchCamera();
     }
+
+    public void release() {
+        mCameraHelper.release();
+    }
 }

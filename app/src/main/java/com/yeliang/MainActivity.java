@@ -26,9 +26,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     private void requestPermission() {
-        int result = PermissionChecker.checkSelfPermission(this, Manifest.permission.CAMERA);
-        if (result == -1) {
+        int CameraPermissionResult = PermissionChecker.checkSelfPermission(this, Manifest.permission.CAMERA);
+        if (CameraPermissionResult == -1) {
             ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.CAMERA}, 1000);
+        }
+
+        int AudioPermissionResult = PermissionChecker.checkSelfPermission(this, Manifest.permission.RECORD_AUDIO);
+        if (AudioPermissionResult == -1) {
+            ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.RECORD_AUDIO}, 1000);
         }
     }
 
