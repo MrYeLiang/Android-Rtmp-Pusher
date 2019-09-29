@@ -5,7 +5,8 @@ add_subdirectory(src/main/cpp/librtmp)
 add_library( native-lib
              SHARED
              src/main/cpp/native-lib.cpp
-             src/main/cpp/VideoChannel.cpp)
+             src/main/cpp/VideoChannel.cpp
+             src/main/cpp/AudioChannel.cpp)
 
 include_directories(src/main/cpp/include)
 
@@ -18,4 +19,5 @@ target_link_libraries( native-lib
                        ${log-lib}
                        rtmp
                        x264
+                       faac
                        log)
